@@ -1,0 +1,18 @@
+﻿@model List<CheeseMVC.Models.CheeseCategory>
+
+    <br />
+<br />
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>@category.Name</li>
+
+    }
+
+</ul>
+
+@if (Model.Count == 0)
+{
+    <p>No categories yet!</p>
+}
