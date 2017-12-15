@@ -1,4 +1,9 @@
-﻿namespace CheeseMVC.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CheeseMVC.Models
 {
     public class Cheese
     {
@@ -7,6 +12,6 @@
         public CheeseCategory Category { get; set; }
         public int CategoryID { get; set; }
         public int ID { get; set; }
-        public IList<CheeseMenu> CheeseMenus { get; set; }
+        public List<CheeseMenu> CheeseMenus { get; set; }
     }
 }
