@@ -26,6 +26,8 @@ namespace CheeseMVC.ViewModels
         {
             this.Menu = menu;
 
+            Cheeses = new List<SelectListItem>();
+
             foreach(Cheese cheese in cheeses)
             {
 
