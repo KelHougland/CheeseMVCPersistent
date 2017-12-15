@@ -14,8 +14,12 @@ namespace CheeseMVC.Controllers
     public class MenuController : Controller
 
     {
-
         private readonly CheeseDbContext context;
+
+        public MenuController(CheeseDbContext dbContext)
+        {
+            context = dbContext;
+        }
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -52,10 +56,13 @@ namespace CheeseMVC.Controllers
         public IActionResult ViewMenu(int id)
         {
             List<CheeseMenu> items = context.CheeseMenus.Include(item => item.Cheese).Where(cm => cm.MenuID == id).ToList();
+            Menu currentMenu = context.Menus.Single(c => c.ID == id);
+
 
             ViewMenuViewModel viewMenuViewModel = new ViewMenuViewModel();
 
             viewMenuViewModel.Items = items;
+            viewMenuViewModel.Menu = currentMenu;
 
             return View(viewMenuViewModel);
         }
@@ -64,7 +71,7 @@ namespace CheeseMVC.Controllers
         public IActionResult AddItem(int id)
         {
             Menu currentMenu = context.Menus.Single(c => c.ID == id);
-            List<Cheese> cheeses = context.Cheeses.ToList();
+            IEnumerable<Cheese> cheeses = context.Cheeses.ToList();
 
             AddMenuItemViewModel addMenuItemViewModel = new AddMenuItemViewModel(currentMenu, cheeses);
 

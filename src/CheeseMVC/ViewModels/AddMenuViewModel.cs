@@ -13,7 +13,7 @@ namespace CheeseMVC.ViewModels
     public class AddMenuViewModel
     {
         [Required]
-        [Display(Name = "Category Name")]
+        [Display(Name = "Menu Name")]
         public string Name { get; set; }
 
     }
